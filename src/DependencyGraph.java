@@ -1,17 +1,18 @@
-import java.io.*;
+import java.io.File;
 import java.util.*;
 
 public class DependencyGraph {
-    private final String rootDir;
+    private String rootDir = "";
     private final Map<String, List<String>> adjList;
 
-    DependencyGraph(String parentDirectory) {
-        rootDir = parentDirectory;
+    DependencyGraph() {
         adjList = new LinkedHashMap<>();
     }
 
-    public void buildDepGraph() {
-        WalkDirectory.walk(new File(rootDir), this::parseFile);
+    public void build(String dir) {
+        rootDir = dir;
+        DirectoryWalker.walk(new File(rootDir), file -> addEdges(Parser.parseFile(file, rootDir)));
+        System.out.println("Dependencies:");
         for (Map.Entry<String, List<String>> e : adjList.entrySet()) {
             System.out.printf("'%s' -> {", e.getKey());
             List<String> childNodes = e.getValue();
@@ -19,46 +20,24 @@ public class DependencyGraph {
                 System.out.printf("'%s'%s", childNodes.get(i), i == childNodes.size() - 1 ? "}\n" : ", ");
             }
         }
+        System.out.println();
         System.out.println("Compilation order:");
         for (String filename : getCompilationOrder()) {
             System.out.println(filename);
         }
     }
 
-    private void addEdge(String begin, String end) {
-        if (adjList.containsKey(begin)) {
-            adjList.get(begin).add(end);
-        } else {
-            adjList.put(begin, new ArrayList<>(List.of(end)));
+    private void addEdges(Map<String, String> edges) {
+        for (Map.Entry<String, String> e : edges.entrySet()) {
+            String begin = e.getKey(), end = e.getValue();
+            if (adjList.containsKey(begin)) {
+                adjList.get(begin).add(end);
+            } else {
+                adjList.put(begin, new ArrayList<>(List.of(end)));
+            }
         }
     }
 
-    private void parseFile(File file) {
-        BufferedReader br;
-        try {
-            br = new BufferedReader(new FileReader(file));
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
-            return;
-        }
-        while (true) {
-            String line;
-            try {
-                line = br.readLine();
-            } catch (IOException e) {
-                System.out.println("I/O error occurred!");
-                return;
-            }
-            if (line == null) {
-                break;
-            }
-            if (!line.startsWith("require")) {
-                continue;
-            }
-            String depName = rootDir + File.separator + line.replaceFirst("require ", "").replaceAll("[\"'“”‘’«»]", "");
-            addEdge((new File(depName)).getPath(), file.getPath());
-        }
-    }
 
     private List<String> getCompilationOrder() {
         List<String> topoSortResult = new ArrayList<>();
