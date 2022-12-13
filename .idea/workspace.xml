@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c8b3b5-0d88-4fc7-8412-aaae9585f8a5" name="Changes" comment="implement cycle detection, change input files">
+    <list default="true" id="75c8b3b5-0d88-4fc7-8412-aaae9585f8a5" name="Changes" comment="refactor project; move parseFile() to Parser class; move parent dir to build() instead of constructor">
       <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -82,7 +82,7 @@
       <workItem from="1670857210087" duration="235000" />
       <workItem from="1670857452729" duration="1694000" />
       <workItem from="1670871349778" duration="1376000" />
-      <workItem from="1670918183961" duration="17692000" />
+      <workItem from="1670918183961" duration="18066000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1670839075036</created>
@@ -133,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670935304294</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="refactor project; move parseFile() to Parser class; move parent dir to build() instead of constructor">
+      <created>1670938174474</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670938174474</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +153,8 @@
     <MESSAGE value="fix DependencyGraph file paths" />
     <MESSAGE value="implement DFS, change Edge record to Map" />
     <MESSAGE value="implement cycle detection, change input files" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement cycle detection, change input files" />
+    <MESSAGE value="refactor project; move parseFile() to Parser class; move parent dir to build() instead of constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor project; move parseFile() to Parser class; move parent dir to build() instead of constructor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
