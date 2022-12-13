@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75c8b3b5-0d88-4fc7-8412-aaae9585f8a5" name="Changes" comment="implement directory walk">
-      <change afterPath="$PROJECT_DIR$/files/Folder 1/File 1-1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/Folder 2/File 2-1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/Folder 2/File 2-2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WalkDirectory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DependencyGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Edge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -21,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -42,10 +41,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last.edited.regexp&quot;: &quot;\&quot;Balls'&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -73,7 +74,12 @@
       <updated>1670835940386</updated>
       <workItem from="1670835941567" duration="1872000" />
       <workItem from="1670838803227" duration="315000" />
-      <workItem from="1670839511435" duration="428000" />
+      <workItem from="1670839511435" duration="4924000" />
+      <workItem from="1670855376098" duration="697000" />
+      <workItem from="1670857210087" duration="235000" />
+      <workItem from="1670857452729" duration="1694000" />
+      <workItem from="1670871349778" duration="1376000" />
+      <workItem from="1670918183961" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1670839075036</created>
@@ -82,7 +88,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670839075036</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="implement directory walk">
+      <created>1670839977206</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670839977206</updated>
+    </task>
+    <task id="LOCAL-00003" summary="implement directory walk">
+      <created>1670839985594</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670839985594</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
