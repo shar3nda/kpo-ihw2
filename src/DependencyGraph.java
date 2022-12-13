@@ -43,8 +43,8 @@ public class DependencyGraph {
             if (!line.startsWith("require")) {
                 continue;
             }
-            String depName = line.replaceFirst("require ", "").replaceAll("[\"'“”‘’«»]", "");
-            addEdge((new File(depName)).getAbsolutePath(), file.getAbsolutePath());
+            String depName = rootDir + File.separator + line.replaceFirst("require ", "").replaceAll("[\"'“”‘’«»]", "");
+            addEdge((new File(depName)).getPath(), file.getPath());
         }
     }
 }
