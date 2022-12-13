@@ -75,9 +75,22 @@ public class DependencyGraph {
                 dfs(filename, vis, st);
             }
         }
+        Map<String, Integer> sortPositions = new HashMap<>();
+        int i = 0;
         while (!st.isEmpty()) {
+            sortPositions.put(st.peek(), i);
+            ++i;
             topoSortResult.add(st.peek());
             st.pop();
+        }
+
+        for (String parentNode : adjList.keySet()) {
+            for (String childNode : adjList.get(parentNode)) {
+                if (sortPositions.get(parentNode) > sortPositions.get(childNode) || Objects.equals(parentNode, childNode)) {
+                    System.out.println("Cycle exists!");
+                    return new ArrayList<>();
+                }
+            }
         }
         return topoSortResult;
     }
