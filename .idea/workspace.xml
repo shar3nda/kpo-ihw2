@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c8b3b5-0d88-4fc7-8412-aaae9585f8a5" name="Changes" comment="implement DependencyGraph as adjacency list of Edge records">
+    <list default="true" id="75c8b3b5-0d88-4fc7-8412-aaae9585f8a5" name="Changes" comment="fix DependencyGraph file paths">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DependencyGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DependencyGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Edge.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +78,7 @@
       <workItem from="1670857210087" duration="235000" />
       <workItem from="1670857452729" duration="1694000" />
       <workItem from="1670871349778" duration="1376000" />
-      <workItem from="1670918183961" duration="1549000" />
+      <workItem from="1670918183961" duration="12936000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1670839075036</created>
@@ -106,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670918743848</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix DependencyGraph file paths">
+      <created>1670920002314</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670920002314</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +125,17 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="implement directory walk" />
     <MESSAGE value="implement DependencyGraph as adjacency list of Edge records" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement DependencyGraph as adjacency list of Edge records" />
+    <MESSAGE value="fix DependencyGraph file paths" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix DependencyGraph file paths" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
