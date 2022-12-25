@@ -3,13 +3,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
+    
     public static Map<String, String> parseFile(File file, String fileDirectory) {
         Map<String, String> dependencies = new HashMap<>();
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(file));
         } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
+            System.out.printf("File %s not found!%n", file.getName());
             return dependencies;
         }
         while (true) {
@@ -17,7 +18,7 @@ public class Parser {
             try {
                 line = br.readLine();
             } catch (IOException e) {
-                System.out.println("I/O error occurred!");
+                System.out.printf("I/O error occurred in file %s%n", file.getName());
                 return dependencies;
             }
             if (line == null) {
@@ -26,7 +27,7 @@ public class Parser {
             if (!line.startsWith("require")) {
                 continue;
             }
-            String depName = fileDirectory + File.separator + line.replaceFirst("require ", "").replaceAll("[\"'“”‘’«»]", "");
+            String depName = "%s%s%s".formatted(fileDirectory, File.separator, line.replaceFirst("require ", "").replaceAll("[\"'“”‘’«»]", ""));
             dependencies.put((new File(depName)).getPath(), file.getPath());
         }
         return dependencies;

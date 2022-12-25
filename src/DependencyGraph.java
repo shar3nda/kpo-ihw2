@@ -1,39 +1,54 @@
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class DependencyGraph {
-    private String rootDir = "";
-    private final Map<String, List<String>> adjList;
+    private Map<String, List<String>> adjacencyList;
+    private List<String> compilationOrder;
+    private String rootDirectory = "";
 
-    DependencyGraph() {
-        adjList = new LinkedHashMap<>();
+    DependencyGraph() {}
+
+    private void build() {
+        adjacencyList = new LinkedHashMap<>();
+        DirectoryWalker.walk(new File(rootDirectory), file -> addEdges(Parser.parseFile(file, rootDirectory)));
+        compilationOrder = getCompilationOrder();
     }
 
-    public void build(String dir) {
-        rootDir = dir;
-        DirectoryWalker.walk(new File(rootDir), file -> addEdges(Parser.parseFile(file, rootDir)));
+    private void printDependencies() {
         System.out.println("Dependencies:");
-        for (Map.Entry<String, List<String>> e : adjList.entrySet()) {
-            System.out.printf("'%s' -> {", e.getKey());
-            List<String> childNodes = e.getValue();
+        for (Map.Entry<String, List<String>> edge : adjacencyList.entrySet()) {
+            System.out.printf("'%s' -> {", edge.getKey());
+            List<String> childNodes = edge.getValue();
             for (int i = 0; i < childNodes.size(); ++i) {
                 System.out.printf("'%s'%s", childNodes.get(i), i == childNodes.size() - 1 ? "}\n" : ", ");
             }
         }
+    }
+
+    public void concatenate(String _rootDirectory) {
+        rootDirectory = _rootDirectory;
+        build();
+        printDependencies();
         System.out.println();
-        System.out.println("Compilation order:");
-        for (String filename : getCompilationOrder()) {
-            System.out.println(filename);
+        for (String filename : compilationOrder) {
+            try {
+                System.out.printf("%s%n%n", new String(Files.readAllBytes(Paths.get(filename))));
+            } catch (IOException e) {
+                System.out.printf("I/O error: can't read file %s%n", filename);
+            }
         }
     }
 
     private void addEdges(Map<String, String> edges) {
-        for (Map.Entry<String, String> e : edges.entrySet()) {
-            String begin = e.getKey(), end = e.getValue();
-            if (adjList.containsKey(begin)) {
-                adjList.get(begin).add(end);
+        for (Map.Entry<String, String> edge : edges.entrySet()) {
+            String begin = edge.getKey(), end = edge.getValue();
+            if (adjacencyList.containsKey(begin)) {
+                adjacencyList.get(begin).add(end);
             } else {
-                adjList.put(begin, new ArrayList<>(List.of(end)));
+                adjacencyList.put(begin, new ArrayList<>(List.of(end)));
             }
         }
     }
@@ -41,32 +56,32 @@ public class DependencyGraph {
 
     private List<String> getCompilationOrder() {
         List<String> topoSortResult = new ArrayList<>();
-        Map<String, Boolean> vis = new HashMap<>();
-        for (String key : adjList.keySet()) {
-            vis.put(key, false);
-            for (String value : adjList.get(key)) {
-                vis.put(value, false);
+        Map<String, Boolean> visited = new HashMap<>();
+        for (String key : adjacencyList.keySet()) {
+            visited.put(key, false);
+            for (String value : adjacencyList.get(key)) {
+                visited.put(value, false);
             }
         }
-        Stack<String> st = new Stack<>();
-        for (String filename : adjList.keySet()) {
-            if (!vis.get(filename)) {
-                dfs(filename, vis, st);
+        Stack<String> entryStack = new Stack<>();
+        for (String filename : adjacencyList.keySet()) {
+            if (!visited.get(filename)) {
+                dfs(filename, visited, entryStack);
             }
         }
         Map<String, Integer> sortPositions = new HashMap<>();
         int i = 0;
-        while (!st.isEmpty()) {
-            sortPositions.put(st.peek(), i);
+        while (!entryStack.isEmpty()) {
+            sortPositions.put(entryStack.peek(), i);
             ++i;
-            topoSortResult.add(st.peek());
-            st.pop();
+            topoSortResult.add(entryStack.peek());
+            entryStack.pop();
         }
 
-        for (String parentNode : adjList.keySet()) {
-            for (String childNode : adjList.get(parentNode)) {
+        for (String parentNode : adjacencyList.keySet()) {
+            for (String childNode : adjacencyList.get(parentNode)) {
                 if (sortPositions.get(parentNode) > sortPositions.get(childNode) || Objects.equals(parentNode, childNode)) {
-                    System.out.println("Cycle exists!");
+                    System.out.println("Cycle detected!");
                     return new ArrayList<>();
                 }
             }
@@ -76,8 +91,8 @@ public class DependencyGraph {
 
     private void dfs(String node, Map<String, Boolean> vis, Stack<String> st) {
         vis.put(node, true);
-        if (adjList.get(node) != null) {
-            for (String childNode : adjList.get(node)) {
+        if (adjacencyList.get(node) != null) {
+            for (String childNode : adjacencyList.get(node)) {
                 if (!vis.get(childNode)) {
                     dfs(childNode, vis, st);
                 }

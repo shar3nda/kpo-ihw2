@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
         DependencyGraph dependencyGraph = new DependencyGraph();
-        dependencyGraph.build("files");
+        dependencyGraph.concatenate("files2");
     }
 }
