@@ -2,7 +2,6 @@ import java.io.File;
 import java.util.function.Consumer;
 
 public final class DirectoryWalker {
-
     /**
      * Функция проходится по всем файлам в текущей папке и во всех вложенных в нее, выполняя операцию {@code fileConsumer} над каждым файлом.
      *

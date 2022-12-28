@@ -3,9 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
-    
-    public static Map<String, String> parseFile(File file, String fileDirectory) {
-        Map<String, String> dependencies = new HashMap<>();
+    public static Map<Node, Node> parseFile(File file, String fileDirectory) {
+        Map<Node, Node> dependencies = new HashMap<>();
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(file));
@@ -13,6 +12,8 @@ public class Parser {
             System.out.printf("File %s not found!%n", file.getName());
             return dependencies;
         }
+
+        dependencies.put(new Node(), new Node(file.getPath()));
         while (true) {
             String line;
             try {
@@ -28,7 +29,7 @@ public class Parser {
                 continue;
             }
             String depName = "%s%s%s".formatted(fileDirectory, File.separator, line.replaceFirst("require ", "").replaceAll("[\"'“”‘’«»]", ""));
-            dependencies.put((new File(depName)).getPath(), file.getPath());
+            dependencies.put((new Node((new File(depName)).getPath())), new Node(file.getPath()));
         }
         return dependencies;
     }
