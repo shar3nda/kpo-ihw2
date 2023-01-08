@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75c8b3b5-0d88-4fc7-8412-aaae9585f8a5" name="Changes" comment="code refactoring; better exception handling">
-      <change afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
+    <list default="true" id="75c8b3b5-0d88-4fc7-8412-aaae9585f8a5" name="Changes" comment="refactoring; replace String with Node; change testing files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Folder 1/File 1-1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Folder 2/File 2-1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Folder 2/File 2-2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files2/Folder 1/File 1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files2/Folder 2/File 2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DependencyGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DependencyGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DirectoryWalker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DirectoryWalker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +43,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last.edited.regexp&quot;: &quot;\&quot;Balls'&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/johann/kpo/kpo-ihw2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -59,6 +54,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -105,7 +103,8 @@
       <workItem from="1672210470639" duration="7977000" />
       <workItem from="1672230120140" duration="894000" />
       <workItem from="1672244122578" duration="303000" />
-      <workItem from="1672244553525" duration="6728000" />
+      <workItem from="1672244553525" duration="6885000" />
+      <workItem from="1673203466629" duration="4413000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1670839075036</created>
@@ -177,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671993699014</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="refactoring; replace String with Node; change testing files">
+      <created>1672251834289</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672251834289</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +199,8 @@
     <MESSAGE value="refactor project; move parseFile() to Parser class; move parent dir to build() instead of constructor" />
     <MESSAGE value="add README.md" />
     <MESSAGE value="code refactoring; better exception handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="code refactoring; better exception handling" />
+    <MESSAGE value="refactoring; replace String with Node; change testing files" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring; replace String with Node; change testing files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -202,11 +209,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DependencyGraph.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

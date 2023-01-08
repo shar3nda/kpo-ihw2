@@ -1,20 +1,23 @@
 import java.util.Objects;
 
+
+/**
+ * Класс вершины, который содержит тип (обчная и фиктивная родительская) и путь к файлу для этой вершины.
+ * Конструктор без параметров создает фиктивную вершину, с параметром - вершину от данного файла.
+ */
 public class Node {
+    private final String name;
+    public nodeType type;
+
     Node() {
         this.type = nodeType.NULL;
         name = null;
     }
-    Node(String s) {
+
+    Node(String file) {
         this.type = nodeType.FILE;
-        name = s;
+        name = file;
     }
-    enum nodeType {
-        NULL,
-        FILE
-    }
-    public nodeType type;
-    private final String name;
 
     @Override
     public String toString() {
@@ -32,5 +35,13 @@ public class Node {
     @Override
     public int hashCode() {
         return Objects.hash(type, name);
+    }
+
+    /**
+     * Тип вершины (NULL - родительская вершина для всех ребер графа, FILE - обычная)
+     */
+    enum nodeType {
+        NULL,
+        FILE
     }
 }
